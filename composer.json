@@ -1,0 +1,10 @@
+{
+    "require": {
+        "erusev/parsedown": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lemon\\": "src/Lemon"
+        }
+    }
+}
