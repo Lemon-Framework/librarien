@@ -6,20 +6,17 @@ use Parsedown;
 
 class MarkDownGenerator
 {
-    private Parsedown $pd;
-
     private string $sidebar;
 
     public function __construct(
-        private Config $config
+        private Config $config,
+        private Parsedown $pd
     ) {
-        $this->pd = new Parsedown();
     }
 
     public function build(): void
     {
-        $repo = $this->config->get('repository');
-        exec('git clone '.$repo.' '.$this->config->get('tmp'));
+        exec('git clone '.$this->config->get('repository').' '.$this->config->get('tmp'));
 
         foreach (scandir($this->config->get('tmp')) as $file) {
             if (str_ends_with($file, 'docs.md')) {
